@@ -1,13 +1,18 @@
-import { createPositionedPieceAtRandom } from "../gameCore/positionedPiece";
-import { PositionedPieceC } from "./PositionedPieceC";
+import { createPositionedPiecesAtRandom } from "../gameCore/positionedPiece";
 import "./App.css";
+import { PositionedPieceC } from "./PositionedPieceC";
 function App() {
-    const posPiece = createPositionedPieceAtRandom();
+    const posPieces = createPositionedPiecesAtRandom();
 
     return (
         <div className="App">
             <div className="gameGrid">
-                <PositionedPieceC posPiece={posPiece} />
+                {posPieces.map((posPiece) => (
+                    <PositionedPieceC
+                        posPiece={posPiece}
+                        key={posPiece.piece.id}
+                    />
+                ))}
             </div>
         </div>
     );

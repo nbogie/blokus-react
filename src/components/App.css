@@ -1,7 +1,10 @@
 body {
     background: beige;
 }
-
+body * {
+    margin: 0;
+    padding: 0;
+}
 .gameGrid {
     display: grid;
     aspect-ratio: 1;
@@ -16,7 +19,7 @@ body {
     display: grid;
     place-items: center;
     /* border-radius: 2px; */
-    outline: 1px solid gainsboro;
+    border: 1px solid gainsboro;
 }
 
 .pieceSquare.black {

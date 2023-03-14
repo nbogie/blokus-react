@@ -8,7 +8,7 @@ export function PositionedPieceC({
     posPiece,
 }: PositionedPieceCProps): JSX.Element {
     const { piece, position } = posPiece;
-    const { shape, colour, id: shapeId } = piece;
+    const { shape, colour } = piece;
 
     return (
         <>
@@ -17,7 +17,7 @@ export function PositionedPieceC({
                     cell === 0 ? null : (
                         <div
                             className={"pieceSquare " + colour}
-                            key={piece.id + "_" + rowIx + "_" + colIx}
+                            key={piece.id + "_" + colIx + "_" + rowIx}
                             style={{
                                 gridRow: `${position.y + rowIx}`,
                                 gridColumn: `${position.x + colIx}`,

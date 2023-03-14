@@ -1,4 +1,4 @@
-import { pick } from "../gameCore/pick";
+import { pick } from "./pick";
 
 export interface Position {
     x: number;
