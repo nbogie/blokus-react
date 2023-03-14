@@ -1,12 +1,14 @@
-import { greet } from "../greet";
-import { MyComponent } from "./MyComponent";
-
+import { createPositionedPieceAtRandom } from "../gameCore/positionedPiece";
+import { PositionedPieceC } from "./PositionedPieceC";
+import "./App.css";
 function App() {
+    const posPiece = createPositionedPieceAtRandom();
+
     return (
         <div className="App">
-            <MyComponent />
-
-            {greet("scholar")}
+            <div className="gameGrid">
+                <PositionedPieceC posPiece={posPiece} />
+            </div>
         </div>
     );
 }

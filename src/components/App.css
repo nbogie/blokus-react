@@ -1,0 +1,29 @@
+body {
+    background: beige;
+}
+
+.gameGrid {
+    display: grid;
+    aspect-ratio: 1;
+    width: calc(min(100vw, 100vh) * 0.8);
+    grid-template-columns: repeat(14, 1fr);
+    grid-template-rows: repeat(14, 1fr);
+    border: 1px solid black;
+    background: beige;
+}
+
+.pieceSquare {
+    display: grid;
+    place-items: center;
+    /* border-radius: 2px; */
+    outline: 1px solid gainsboro;
+}
+
+.pieceSquare.black {
+    background: #333;
+    color: #fff;
+}
+.pieceSquare.white {
+    background: #fff;
+    color: #333;
+}
