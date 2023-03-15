@@ -43,9 +43,25 @@ export function ControlButtons({
             </button>
             <button
                 className="flipH"
-                onClick={() => dispatch({ name: "hflip-floating-piece" })}
+                onClick={() =>
+                    dispatch({
+                        name: "flip-floating-piece",
+                        flipDirection: "horizontal",
+                    })
+                }
             >
                 ↔️
+            </button>
+            <button
+                className="flipV"
+                onClick={() =>
+                    dispatch({
+                        name: "flip-floating-piece",
+                        flipDirection: "vertical",
+                    })
+                }
+            >
+                ↕️
             </button>
 
             {

@@ -1,7 +1,7 @@
-import { hFlipShape, vFlipShape } from "../gameCore/flipShape";
+import { hFlipShape } from "../gameCore/flipShape";
 import { GameState } from "../gameCore/gameState";
 import { isLegalPlacement } from "../gameCore/isLegalPlacement";
-import { Position, areSamePosition } from "../gameCore/position";
+import { areSamePosition, Position } from "../gameCore/position";
 import { PositionedPiece } from "../gameCore/positionedPiece";
 import { rotateShapeCW } from "../gameCore/rotateShape";
 import { Shape } from "../gameCore/shape";
@@ -35,13 +35,8 @@ function piecesOverlap(a: PositionedPiece, b: PositionedPiece): boolean {
 
 export function calcRealCellPositions(p: PositionedPiece): Position[] {
     let shape: Shape = p.piece.shape;
-    if (p.isHFlipped) {
-        //if the piece is rotated by 90 or 270 degrees, then asking for a hflip should perform a vflip!
-        if (p.rotation === 0 || p.rotation === 2) {
-            shape = hFlipShape(shape);
-        } else {
-            shape = vFlipShape(shape);
-        }
+    if (p.isFlipped) {
+        shape = hFlipShape(shape);
     }
     shape = rotateShapeCW(shape, p.rotation);
     const positionedCells: Position[] = [];

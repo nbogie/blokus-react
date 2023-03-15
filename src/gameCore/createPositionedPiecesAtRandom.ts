@@ -20,14 +20,14 @@ export function createPositionedPiecesAtRandom(
         const dim = pieceDimensionsWhenRotatedAndFlipped({
             piece,
             rotation,
-            isHFlipped: false,
+            isFlipped: false,
         });
 
         return {
             piece,
             position: randomPositionFitting(dim),
             rotation,
-            isHFlipped: false,
+            isFlipped: false,
         };
     });
 
@@ -54,8 +54,8 @@ export function createPositionedPieceAtRandom(): PositionedPiece {
         pieceDimensionsWhenRotatedAndFlipped({
             piece,
             rotation,
-            isHFlipped: false,
+            isFlipped: false,
         })
     );
-    return { position, piece, rotation, isHFlipped: false };
+    return { position, piece, rotation, isFlipped: false };
 }

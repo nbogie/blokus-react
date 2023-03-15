@@ -16,7 +16,7 @@ export function doRotateFloatingPiece(
         pieceWouldBeInBounds(
             gs.floatingPiece.piece,
             newRotation,
-            gs.floatingPiece.isHFlipped,
+            gs.floatingPiece.isFlipped,
             pos
         )
     ) {

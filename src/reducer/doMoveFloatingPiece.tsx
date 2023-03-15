@@ -18,7 +18,7 @@ export function doMoveFloatingPiece(
         pieceWouldBeInBounds(
             gs.floatingPiece.piece,
             gs.floatingPiece.rotation,
-            gs.floatingPiece.isHFlipped,
+            gs.floatingPiece.isFlipped,
             candidatePosition
         )
     ) {

@@ -24,7 +24,7 @@ export function doAddRandomPieceFloating(
         piece: piece,
         rotation: 0,
         position: { x: 7, y: 7 },
-        isHFlipped: false,
+        isFlipped: false,
     };
     gs.floatingPiece = positionedPiece;
     // gs.positionedPieces.push(positionedPiece);

@@ -15,7 +15,7 @@ export type PieceColour = "black" | "white";
 export function pieceDimensionsWhenRotatedAndFlipped(positionedPiece: {
     piece: Piece;
     rotation: Rotation;
-    isHFlipped: boolean;
+    isFlipped: boolean;
 }): {
     width: number;
     height: number;
@@ -39,7 +39,7 @@ export function pieceWouldBeInBounds(
     const dim = pieceDimensionsWhenRotatedAndFlipped({
         piece,
         rotation,
-        isHFlipped,
+        isFlipped: isHFlipped,
     });
     return (
         pos.x >= 0 &&

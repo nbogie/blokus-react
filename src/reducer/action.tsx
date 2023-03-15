@@ -8,7 +8,7 @@ export type Action =
     | MoveFloatingPieceAction
     | RotateFloatingPieceAction
     | PlacePieceAction
-    | HFlipFloatingPieceAction
+    | FlipFloatingPieceAction
     | ResetGameAction;
 export type PlacePieceAction = {
     name: "place-piece";
@@ -20,8 +20,10 @@ export type AddRandomPieceFloatingAction = {
     pieceColour: PieceColour;
 };
 export type RotateFloatingPieceAction = { name: "rotate-floating-piece" };
-export type HFlipFloatingPieceAction = { name: "hflip-floating-piece" };
-export type VFlipFloatingPieceAction = { name: "vflip-floating-piece" };
+export type FlipFloatingPieceAction = {
+    name: "flip-floating-piece";
+    flipDirection: "horizontal" | "vertical";
+};
 export type MoveFloatingPieceAction = {
     name: "move-floating-piece";
     direction: Direction;

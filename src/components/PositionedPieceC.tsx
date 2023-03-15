@@ -1,4 +1,4 @@
-import { hFlipShape, vFlipShape } from "../gameCore/flipShape";
+import { hFlipShape } from "../gameCore/flipShape";
 import { PositionedPiece } from "../gameCore/positionedPiece";
 import { rotateShapeCW } from "../gameCore/rotateShape";
 import { Shape } from "../gameCore/shape";
@@ -18,13 +18,8 @@ export function PositionedPieceC({
     const { colour } = piece;
 
     let shape: Shape = posPiece.piece.shape;
-    if (posPiece.isHFlipped) {
-        //if the piece is rotated by 90 or 270 degrees, then asking for a hflip should perform a vflip!
-        if (posPiece.rotation === 0 || posPiece.rotation === 2) {
-            shape = hFlipShape(shape);
-        } else {
-            shape = vFlipShape(shape);
-        }
+    if (posPiece.isFlipped) {
+        shape = hFlipShape(shape);
     }
 
     const transformedShape = rotateShapeCW(shape, posPiece.rotation);

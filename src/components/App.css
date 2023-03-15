@@ -47,8 +47,8 @@ body * {
 .movementButtonGrid {
     display: grid;
     grid-template-areas:
-        "left up right"
-        ".... down rotate";
+        "left up right flipH"
+        ".. down rotate flipV";
     grid-template-rows: 1fr 1fr;
 }
 .movementButtonGrid .up {
@@ -66,6 +66,12 @@ body * {
 .movementButtonGrid .rotate {
     grid-area: rotate;
     transform: scaleX(-1);
+}
+.movementButtonGrid .flipV {
+    grid-area: flipV;
+}
+.movementButtonGrid .flipH {
+    grid-area: flipH;
 }
 
 .startingPositionMarker {
