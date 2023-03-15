@@ -25,6 +25,3 @@ export function createInitialGameState(): GameState {
 
     return gs;
 }
-
-export const boardWidth = 14;
-export const boardHeight = 14;

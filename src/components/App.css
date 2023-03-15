@@ -67,3 +67,17 @@ body * {
     grid-area: rotate;
     transform: scaleX(-1);
 }
+
+.startingPositionMarker {
+    display: grid;
+    place-items: center;
+    opacity: 0.5;
+}
+
+.startingPositionMarker.white {
+    color: white;
+}
+
+.startingPositionMarker.black {
+    color: #333;
+}

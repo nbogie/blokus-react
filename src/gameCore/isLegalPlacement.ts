@@ -2,7 +2,8 @@ import {
     calcRealCellPositions,
     pieceOverlapsAny,
 } from "../reducer/doPlacePiece";
-import { Position } from "./position";
+import { getStartingPositionForColour } from "./board";
+import { areSamePosition, Position } from "./position";
 import { PositionedPiece } from "./positionedPiece";
 
 export function isLegalPlacement(
@@ -15,17 +16,21 @@ export function isLegalPlacement(
     const ownPlacedPieces = positionedPieces.filter(
         (ppos) => ppos.piece.colour === candidatePiece.piece.colour
     );
+    const isFirstPieceOfItsColour = ownPlacedPieces.length === 0;
 
     if (
-        ownPlacedPieces.length > 0 &&
+        !isFirstPieceOfItsColour &&
         !pieceTouchesOwnOnCorner(candidatePiece, ownPlacedPieces)
     ) {
         return false;
     }
 
+    if (pieceTouchesOwnOnSide(candidatePiece, ownPlacedPieces)) {
+        return false;
+    }
     if (
-        ownPlacedPieces.length > 0 &&
-        pieceTouchesOwnOnSide(candidatePiece, ownPlacedPieces)
+        isFirstPieceOfItsColour &&
+        !pieceOverlapsItsStartSquare(candidatePiece)
     ) {
         return false;
     }
@@ -90,4 +95,10 @@ function areAdjacentPositions(a: Position, b: Position): boolean {
         (deltaX === 0 && Math.abs(deltaY) === 1) ||
         (deltaY === 0 && Math.abs(deltaX) === 1)
     );
+}
+
+function pieceOverlapsItsStartSquare(candidatePiece: PositionedPiece): boolean {
+    const startPos = getStartingPositionForColour(candidatePiece.piece.colour);
+    const cellPositions = calcRealCellPositions(candidatePiece);
+    return cellPositions.some((p) => areSamePosition(p, startPos));
 }

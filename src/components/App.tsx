@@ -1,10 +1,11 @@
 import { useImmerReducer } from "use-immer";
+import { getStartingPositionForColour } from "../gameCore/board";
 import { createInitialGameState } from "../gameCore/gameState";
 import { isLegalPlacement } from "../gameCore/isLegalPlacement";
-import { pieceOverlapsAny } from "../reducer/doPlacePiece";
 import { reducerFunction } from "../reducer/reducerFunction";
 import "./App.css";
 import { PositionedPieceC } from "./PositionedPieceC";
+import { StartingPositionMarkerC } from "./StartingPositionMarkerC";
 
 function App() {
     const [gameState, dispatch] = useImmerReducer(
@@ -49,6 +50,14 @@ function App() {
                         }
                     />
                 )}
+                <StartingPositionMarkerC
+                    colour={"white"}
+                    position={getStartingPositionForColour("white")}
+                />
+                <StartingPositionMarkerC
+                    colour={"black"}
+                    position={getStartingPositionForColour("black")}
+                />
             </div>
             <button
                 onClick={() =>

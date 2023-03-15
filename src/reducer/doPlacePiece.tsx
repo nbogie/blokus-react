@@ -1,6 +1,6 @@
 import { GameState } from "../gameCore/gameState";
 import { isLegalPlacement } from "../gameCore/isLegalPlacement";
-import { Position, samePosition } from "../gameCore/position";
+import { Position, areSamePosition } from "../gameCore/position";
 import { PositionedPiece } from "../gameCore/positionedPiece";
 import { rotateShapeCW } from "../gameCore/rotateShape";
 import { PlacePieceAction } from "./action";
@@ -27,7 +27,7 @@ function piecesOverlap(a: PositionedPiece, b: PositionedPiece): boolean {
     const cellAPositions: Position[] = calcRealCellPositions(a);
     const cellBPositions: Position[] = calcRealCellPositions(b);
     return cellAPositions.some((posA) =>
-        cellBPositions.some((posB) => samePosition(posA, posB))
+        cellBPositions.some((posB) => areSamePosition(posA, posB))
     );
 }
 

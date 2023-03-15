@@ -1,4 +1,4 @@
-import { boardWidth, boardHeight } from "./gameState";
+import { boardWidth, boardHeight } from "./board";
 import { Position } from "./position";
 import { rotateShapeCW } from "./rotateShape";
 import { Rotation } from "./rotation";
