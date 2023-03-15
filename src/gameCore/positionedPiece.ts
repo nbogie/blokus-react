@@ -9,7 +9,10 @@ export interface PositionedPiece {
     rotation: Rotation;
 }
 
-export function positionedPieceDimensions(positionedPiece: PositionedPiece): {
+export function pieceDimensionsWhenRotated(positionedPiece: {
+    piece: Piece;
+    rotation: Rotation;
+}): {
     width: number;
     height: number;
 } {

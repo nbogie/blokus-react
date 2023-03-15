@@ -1,13 +1,19 @@
-import { pick } from "../utils/pick";
-
 export interface Position {
     x: number;
     y: number;
 }
 
-export function randomPosition(): Position {
+export function randomPosition(maxX: number = 13, maxY: number = 13): Position {
     return {
-        x: pick([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]),
-        y: pick([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]),
+        x: Math.floor(Math.random() * (maxX + 1)),
+        y: Math.floor(Math.random() * (maxY + 1)),
     };
+}
+
+export function randomPositionFitting(dim: {
+    width: number;
+    height: number;
+}): Position {
+    const p = randomPosition(14 - dim.width, 14 - dim.height);
+    return p;
 }
