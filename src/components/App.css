@@ -28,14 +28,14 @@ body * {
     display: grid;
     place-items: center;
     /* border-radius: 2px; */
-    border: 1px solid gainsboro;
+    border: 1px solid rgba(220, 220, 220, 0.364);
 }
 
 .pieceSquare.black {
-    background: #333;
+    background: magenta;
     color: #fff;
 }
 .pieceSquare.white {
-    background: #fff;
+    background: cyan;
     color: #333;
 }

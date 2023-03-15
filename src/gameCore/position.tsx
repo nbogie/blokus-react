@@ -1,4 +1,4 @@
-import { pick } from "./pick";
+import { pick } from "../utils/pick";
 
 export interface Position {
     x: number;

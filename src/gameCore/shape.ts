@@ -1,4 +1,4 @@
-export type Cell = 1 | 0;
+export type Cell = 1 | 0; //0 marks a void in the shape.  1 marks a presence.
 type CellRow = Cell[];
 
 export interface Shape {
