@@ -4,7 +4,6 @@ import { doAddRandomPieceFloating } from "./doAddRandomPieceFloating";
 import { doMoveFloatingPiece } from "./doMoveFloatingPiece";
 import { doPlacePiece } from "./doPlacePiece";
 import { doRotateFloatingPiece } from "./doRotateFloatingPiece";
-import { doRotatePiece } from "./doRotatePiece";
 
 export function reducerFunction(
     gs: GameState,
@@ -14,14 +13,9 @@ export function reducerFunction(
         case "place-piece":
             doPlacePiece(gs, action);
             return;
-        case "rotate-piece":
-            doRotatePiece(gs, action);
-            return;
-
         case "rotate-floating-piece":
             doRotateFloatingPiece(gs, action);
             return;
-
         case "add-random-piece-floating":
             doAddRandomPieceFloating(gs, action);
             return;

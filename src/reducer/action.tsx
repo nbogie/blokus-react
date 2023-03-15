@@ -8,16 +8,13 @@ export type Action =
     | MoveFloatingPieceAction
     | RotateFloatingPieceAction
     | PlacePieceAction
-    | ResetGameAction
-    | RotatePieceAction;
-
+    | ResetGameAction;
 export type PlacePieceAction = {
     name: "place-piece";
     positionPiece: PositionedPiece;
 };
 export type ResetGameAction = { name: "reset-game" };
 export type RotateFloatingPieceAction = { name: "rotate-floating-piece" };
-export type RotatePieceAction = { name: "rotate-piece"; pieceId: string };
 export type AddRandomPieceFloatingAction = {
     name: "add-random-piece-floating";
     pieceColour: PieceColour;

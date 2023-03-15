@@ -10,9 +10,6 @@ function App() {
         createInitialGameState()
     );
 
-    function rotatePiece(id: string) {
-        dispatch({ name: "rotate-piece", pieceId: id });
-    }
     function moveLeft() {
         dispatch({ name: "move-floating-piece", direction: { x: -1, y: 0 } });
     }
@@ -33,14 +30,14 @@ function App() {
                     <PositionedPieceC
                         posPiece={posPiece}
                         key={posPiece.piece.id}
-                        onClick={rotatePiece}
+                        onClick={() => {}}
                     />
                 ))}
 
                 {gameState.floatingPiece && (
                     <PositionedPieceC
                         posPiece={gameState.floatingPiece}
-                        onClick={rotatePiece}
+                        onClick={() => {}}
                     />
                 )}
             </div>
