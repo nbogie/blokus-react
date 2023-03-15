@@ -1,13 +1,15 @@
 import { GameState } from "../gameCore/gameState";
+import { isLegalPlacement } from "../gameCore/isLegalPlacement";
 import { Position, samePosition } from "../gameCore/position";
 import { PositionedPiece } from "../gameCore/positionedPiece";
 import { rotateShapeCW } from "../gameCore/rotateShape";
 import { PlacePieceAction } from "./action";
 
 export function doPlacePiece(gs: GameState, action: PlacePieceAction) {
-    if (pieceOverlapsAny(action.positionPiece, gs.positionedPieces)) {
+    if (!isLegalPlacement(action.positionPiece, gs.positionedPieces)) {
         return;
     }
+
     gs.floatingPiece = null;
     gs.positionedPieces.push(action.positionPiece);
 }
@@ -29,7 +31,7 @@ function piecesOverlap(a: PositionedPiece, b: PositionedPiece): boolean {
     );
 }
 
-function calcRealCellPositions(p: PositionedPiece): Position[] {
+export function calcRealCellPositions(p: PositionedPiece): Position[] {
     const rotatedShape = rotateShapeCW(p.piece.shape, p.rotation);
     const positionedCells: Position[] = [];
 
