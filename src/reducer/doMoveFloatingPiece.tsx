@@ -1,4 +1,6 @@
 import { GameState } from "../gameCore/gameState";
+import { pieceWouldBeInBounds } from "../gameCore/piece";
+import { addToPosition } from "../gameCore/position";
 import { MoveFloatingPieceAction } from "./action";
 
 export function doMoveFloatingPiece(
@@ -10,6 +12,16 @@ export function doMoveFloatingPiece(
         return;
     }
 
-    gs.floatingPiece.position.x += action.direction.x;
-    gs.floatingPiece.position.y += action.direction.y;
+    const currentPosition = gs.floatingPiece.position;
+    const candidatePosition = addToPosition(currentPosition, action.direction);
+    if (
+        pieceWouldBeInBounds(
+            gs.floatingPiece.piece,
+            gs.floatingPiece.rotation,
+            candidatePosition
+        )
+    ) {
+        gs.floatingPiece.position.x += action.direction.x;
+        gs.floatingPiece.position.y += action.direction.y;
+    }
 }

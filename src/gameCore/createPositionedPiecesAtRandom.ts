@@ -1,8 +1,8 @@
 import { pick } from "../utils/pick";
 import { shuffle } from "../utils/shuffle";
-import { Piece, PieceColour } from "./piece";
+import { Piece, PieceColour, pieceDimensionsWhenRotated } from "./piece";
 import { randomPositionFitting } from "./position";
-import { pieceDimensionsWhenRotated, PositionedPiece } from "./positionedPiece";
+import { PositionedPiece } from "./positionedPiece";
 import { allRotations, randomRotation } from "./rotation";
 import { allShapes } from "./shape";
 

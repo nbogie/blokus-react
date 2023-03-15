@@ -1,4 +1,5 @@
 import { GameState } from "../gameCore/gameState";
+import { pieceWouldBeInBounds } from "../gameCore/piece";
 import { Rotation } from "../gameCore/rotation";
 import { RotateFloatingPieceAction } from "./action";
 
@@ -9,7 +10,9 @@ export function doRotateFloatingPiece(
     if (gs.floatingPiece === null) {
         return;
     }
-
-    gs.floatingPiece.rotation = ((gs.floatingPiece.rotation + 1) %
-        4) as Rotation;
+    const newRotation = ((gs.floatingPiece.rotation + 1) % 4) as Rotation;
+    const pos = gs.floatingPiece.position;
+    if (pieceWouldBeInBounds(gs.floatingPiece.piece, newRotation, pos)) {
+        gs.floatingPiece.rotation = newRotation;
+    }
 }

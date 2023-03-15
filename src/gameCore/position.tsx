@@ -17,3 +17,10 @@ export function randomPositionFitting(dim: {
     const p = randomPosition(14 - dim.width, 14 - dim.height);
     return p;
 }
+
+export function addToPosition(p: Position, dir: { x: number; y: number }) {
+    return {
+        x: p.x + dir.x,
+        y: p.y + dir.y,
+    };
+}

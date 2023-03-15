@@ -4,12 +4,12 @@ import { PositionedPiece } from "../gameCore/positionedPiece";
 type Direction = { x: number; y: number };
 
 export type Action =
-    | PlacePieceAction
-    | ResetGameAction
-    | RotatePieceAction
     | AddRandomPieceFloatingAction
     | MoveFloatingPieceAction
-    | RotateFloatingPieceAction;
+    | RotateFloatingPieceAction
+    | PlacePieceAction
+    | ResetGameAction
+    | RotatePieceAction;
 
 export type PlacePieceAction = {
     name: "place-piece";
