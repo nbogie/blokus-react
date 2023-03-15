@@ -24,3 +24,7 @@ export function addToPosition(p: Position, dir: { x: number; y: number }) {
         y: p.y + dir.y,
     };
 }
+
+export function samePosition(a: Position, b: Position): boolean {
+    return a.x === b.x && a.y === b.y;
+}
