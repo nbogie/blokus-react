@@ -12,9 +12,10 @@ export interface Piece {
 
 export type PieceColour = "black" | "white";
 
-export function pieceDimensionsWhenRotated(positionedPiece: {
+export function pieceDimensionsWhenRotatedAndFlipped(positionedPiece: {
     piece: Piece;
     rotation: Rotation;
+    isHFlipped: boolean;
 }): {
     width: number;
     height: number;
@@ -32,9 +33,14 @@ export function pieceDimensionsWhenRotated(positionedPiece: {
 export function pieceWouldBeInBounds(
     piece: Piece,
     rotation: Rotation,
+    isHFlipped: boolean,
     pos: Position
 ) {
-    const dim = pieceDimensionsWhenRotated({ piece, rotation });
+    const dim = pieceDimensionsWhenRotatedAndFlipped({
+        piece,
+        rotation,
+        isHFlipped,
+    });
     return (
         pos.x >= 0 &&
         pos.x + dim.width <= boardWidth &&

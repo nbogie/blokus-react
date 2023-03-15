@@ -1,6 +1,7 @@
 import { GameState } from "../gameCore/gameState";
 import { Action } from "./action";
 import { doAddRandomPieceFloating } from "./doAddRandomPieceFloating";
+import { doHFlipFloatingPiece } from "./doHFlipFloatingPiece";
 import { doMoveFloatingPiece } from "./doMoveFloatingPiece";
 import { doPlacePiece } from "./doPlacePiece";
 import { doRotateFloatingPiece } from "./doRotateFloatingPiece";
@@ -13,9 +14,6 @@ export function reducerFunction(
         case "place-piece":
             doPlacePiece(gs, action);
             return;
-        case "rotate-floating-piece":
-            doRotateFloatingPiece(gs, action);
-            return;
         case "add-random-piece-floating":
             doAddRandomPieceFloating(gs, action);
             return;
@@ -23,6 +21,12 @@ export function reducerFunction(
             return;
         case "move-floating-piece":
             doMoveFloatingPiece(gs, action);
+            return;
+        case "rotate-floating-piece":
+            doRotateFloatingPiece(gs, action);
+            return;
+        case "hflip-floating-piece":
+            doHFlipFloatingPiece(gs, action);
             return;
         default:
             throw new UnreachableCodeError(

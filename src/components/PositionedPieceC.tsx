@@ -1,5 +1,7 @@
+import { hFlipShape, vFlipShape } from "../gameCore/flipShape";
 import { PositionedPiece } from "../gameCore/positionedPiece";
 import { rotateShapeCW } from "../gameCore/rotateShape";
+import { Shape } from "../gameCore/shape";
 
 interface PositionedPieceCProps {
     posPiece: PositionedPiece;
@@ -13,11 +15,22 @@ export function PositionedPieceC({
     highlightError,
 }: PositionedPieceCProps): JSX.Element {
     const { piece, position } = posPiece;
-    const { shape, colour } = piece;
-    const rotatedShape = rotateShapeCW(shape, posPiece.rotation);
+    const { colour } = piece;
+
+    let shape: Shape = posPiece.piece.shape;
+    if (posPiece.isHFlipped) {
+        //if the piece is rotated by 90 or 270 degrees, then asking for a hflip should perform a vflip!
+        if (posPiece.rotation === 0 || posPiece.rotation === 2) {
+            shape = hFlipShape(shape);
+        } else {
+            shape = vFlipShape(shape);
+        }
+    }
+
+    const transformedShape = rotateShapeCW(shape, posPiece.rotation);
     return (
         <>
-            {rotatedShape.rows.flatMap((row, rowIx) =>
+            {transformedShape.rows.flatMap((row, rowIx) =>
                 row.map((cell, colIx) =>
                     cell === 0 ? null : (
                         <div

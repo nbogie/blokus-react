@@ -41,6 +41,12 @@ export function ControlButtons({
             >
                 🔄
             </button>
+            <button
+                className="flipH"
+                onClick={() => dispatch({ name: "hflip-floating-piece" })}
+            >
+                ↔️
+            </button>
 
             {
                 <button

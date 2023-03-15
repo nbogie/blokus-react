@@ -12,7 +12,14 @@ export function doRotateFloatingPiece(
     }
     const newRotation = ((gs.floatingPiece.rotation + 1) % 4) as Rotation;
     const pos = gs.floatingPiece.position;
-    if (pieceWouldBeInBounds(gs.floatingPiece.piece, newRotation, pos)) {
+    if (
+        pieceWouldBeInBounds(
+            gs.floatingPiece.piece,
+            newRotation,
+            gs.floatingPiece.isHFlipped,
+            pos
+        )
+    ) {
         gs.floatingPiece.rotation = newRotation;
     }
 }

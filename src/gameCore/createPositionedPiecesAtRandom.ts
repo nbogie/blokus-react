@@ -1,6 +1,10 @@
 import { pick } from "../utils/pick";
 import { shuffle } from "../utils/shuffle";
-import { Piece, PieceColour, pieceDimensionsWhenRotated } from "./piece";
+import {
+    Piece,
+    PieceColour,
+    pieceDimensionsWhenRotatedAndFlipped,
+} from "./piece";
 import { randomPositionFitting } from "./position";
 import { PositionedPiece } from "./positionedPiece";
 import { allRotations, randomRotation } from "./rotation";
@@ -13,12 +17,17 @@ export function createPositionedPiecesAtRandom(
     const chosenPieces = shuffle(allPieces).slice(0, numPieces);
     const positionedPieces: PositionedPiece[] = chosenPieces.map((piece) => {
         const rotation = randomRotation();
-        const dim = pieceDimensionsWhenRotated({ piece, rotation });
+        const dim = pieceDimensionsWhenRotatedAndFlipped({
+            piece,
+            rotation,
+            isHFlipped: false,
+        });
 
         return {
             piece,
             position: randomPositionFitting(dim),
             rotation,
+            isHFlipped: false,
         };
     });
 
@@ -42,7 +51,11 @@ export function createPositionedPieceAtRandom(): PositionedPiece {
     const piece: Piece = { shape, id: shape.id + "", colour };
     const rotation = pick(allRotations);
     const position = randomPositionFitting(
-        pieceDimensionsWhenRotated({ piece, rotation })
+        pieceDimensionsWhenRotatedAndFlipped({
+            piece,
+            rotation,
+            isHFlipped: false,
+        })
     );
-    return { position, piece, rotation };
+    return { position, piece, rotation, isHFlipped: false };
 }

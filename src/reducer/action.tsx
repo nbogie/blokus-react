@@ -8,17 +8,20 @@ export type Action =
     | MoveFloatingPieceAction
     | RotateFloatingPieceAction
     | PlacePieceAction
+    | HFlipFloatingPieceAction
     | ResetGameAction;
 export type PlacePieceAction = {
     name: "place-piece";
     positionPiece: PositionedPiece;
 };
 export type ResetGameAction = { name: "reset-game" };
-export type RotateFloatingPieceAction = { name: "rotate-floating-piece" };
 export type AddRandomPieceFloatingAction = {
     name: "add-random-piece-floating";
     pieceColour: PieceColour;
 };
+export type RotateFloatingPieceAction = { name: "rotate-floating-piece" };
+export type HFlipFloatingPieceAction = { name: "hflip-floating-piece" };
+export type VFlipFloatingPieceAction = { name: "vflip-floating-piece" };
 export type MoveFloatingPieceAction = {
     name: "move-floating-piece";
     direction: Direction;

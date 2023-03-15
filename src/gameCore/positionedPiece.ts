@@ -6,4 +6,5 @@ export interface PositionedPiece {
     piece: Piece;
     position: Position;
     rotation: Rotation;
+    isHFlipped: boolean;
 }
