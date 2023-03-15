@@ -52,6 +52,9 @@ body * {
     grid-template-rows: 1fr 1fr;
     grid-template-columns: repeat(6, 1fr);
 }
+.movementButtonGrid button {
+    font-size: 1.3rem;
+}
 .movementButtonGrid .up {
     grid-area: up;
 }
