@@ -41,20 +41,8 @@ function App() {
                     position={getStartingPositionForColour("black")}
                 />
             </div>
-            <button
-                onClick={() =>
-                    dispatch({
-                        name: "add-random-piece-floating",
-                        pieceColour: gameState.nextPieceColour,
-                    })
-                }
-            >
-                Add random piece
-            </button>
 
-            {gameState.floatingPiece && (
-                <ControlButtons dispatch={dispatch} gameState={gameState} />
-            )}
+            <ControlButtons dispatch={dispatch} gameState={gameState} />
         </div>
     );
 }

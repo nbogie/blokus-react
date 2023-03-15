@@ -23,21 +23,38 @@ export function ControlButtons({
     }
     return (
         <div className="movementButtonGrid">
-            <button className="up" onClick={moveUp}>
+            <button
+                className="up"
+                onClick={moveUp}
+                disabled={!gameState.floatingPiece}
+            >
                 ⬆️
             </button>
-            <button className="left" onClick={moveLeft}>
+            <button
+                className="left"
+                onClick={moveLeft}
+                disabled={!gameState.floatingPiece}
+            >
                 ⬅️
             </button>
-            <button className="right" onClick={moveRight}>
+            <button
+                className="right"
+                onClick={moveRight}
+                disabled={!gameState.floatingPiece}
+            >
                 ➡️
             </button>
-            <button className="down" onClick={moveDown}>
+            <button
+                className="down"
+                onClick={moveDown}
+                disabled={!gameState.floatingPiece}
+            >
                 ⬇️
             </button>
             <button
                 className="rotate"
                 onClick={() => dispatch({ name: "rotate-floating-piece" })}
+                disabled={!gameState.floatingPiece}
             >
                 🔄
             </button>
@@ -49,6 +66,7 @@ export function ControlButtons({
                         flipDirection: "horizontal",
                     })
                 }
+                disabled={!gameState.floatingPiece}
             >
                 ↔️
             </button>
@@ -60,23 +78,37 @@ export function ControlButtons({
                         flipDirection: "vertical",
                     })
                 }
+                disabled={!gameState.floatingPiece}
             >
                 ↕️
             </button>
 
-            {
-                <button
-                    className="lock"
-                    onClick={() =>
-                        dispatch({
-                            name: "place-piece",
-                            positionPiece: gameState.floatingPiece!,
-                        })
-                    }
-                >
-                    ✅
-                </button>
-            }
+            <button
+                className="lock"
+                onClick={() =>
+                    gameState.floatingPiece !== null
+                        ? dispatch({
+                              name: "place-piece",
+                              positionPiece: gameState.floatingPiece,
+                          })
+                        : () => {}
+                }
+                disabled={!gameState.floatingPiece}
+            >
+                ✅
+            </button>
+
+            <button
+                className="addRandom"
+                onClick={() =>
+                    dispatch({
+                        name: "add-random-piece-floating",
+                        pieceColour: gameState.nextPieceColour,
+                    })
+                }
+            >
+                🎲
+            </button>
         </div>
     );
 }
