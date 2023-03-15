@@ -39,3 +39,27 @@ body * {
     background: white;
     color: #333;
 }
+
+.movementButtonGrid {
+    display: grid;
+    grid-template-areas:
+        "left up right"
+        ".... down rotate";
+    grid-template-rows: 1fr 1fr;
+}
+.movementButtonGrid .up {
+    grid-area: up;
+}
+.movementButtonGrid .down {
+    grid-area: down;
+}
+.movementButtonGrid .left {
+    grid-area: left;
+}
+.movementButtonGrid .right {
+    grid-area: right;
+}
+.movementButtonGrid .rotate {
+    grid-area: rotate;
+    transform: scaleX(-1);
+}

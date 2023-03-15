@@ -9,13 +9,7 @@ import { allShapes } from "./shape";
 export function createPositionedPiecesAtRandom(
     numPieces: number
 ): PositionedPiece[] {
-    const allPieces: Piece[] = [];
-    for (let s of allShapes) {
-        for (let c of ["black", "white"] as PieceColour[]) {
-            const p: Piece = { colour: c, shape: s, id: s.id + "_" + c };
-            allPieces.push(p);
-        }
-    }
+    const allPieces: Piece[] = createAllPieces();
     const chosenPieces = shuffle(allPieces).slice(0, numPieces);
     const positionedPieces: PositionedPiece[] = chosenPieces.map((piece) => {
         const rotation = randomRotation();
@@ -29,6 +23,17 @@ export function createPositionedPiecesAtRandom(
     });
 
     return positionedPieces;
+}
+
+export function createAllPieces() {
+    const allPieces: Piece[] = [];
+    for (let s of allShapes) {
+        for (let c of ["black", "white"] as PieceColour[]) {
+            const p: Piece = { colour: c, shape: s, id: s.id + "_" + c };
+            allPieces.push(p);
+        }
+    }
+    return allPieces;
 }
 
 export function createPositionedPieceAtRandom(): PositionedPiece {

@@ -1,13 +1,26 @@
-import { createPositionedPiecesAtRandom } from "./createPositionedPiecesAtRandom";
+import { createAllPieces } from "./createPositionedPiecesAtRandom";
+import { Piece, PieceColour } from "./piece";
 import { PositionedPiece } from "./positionedPiece";
 
 export interface GameState {
-    posPieces: PositionedPiece[];
+    positionedPieces: PositionedPiece[];
+    whitePiecesLeft: Piece[];
+    blackPiecesLeft: Piece[];
+    floatingPiece: PositionedPiece | null;
+    nextPieceColour: PieceColour;
 }
 
 export function createInitialGameState(): GameState {
+    const allPieces = createAllPieces();
+    const whitePieces = allPieces.filter((p) => p.colour === "white");
+    const blackPieces = allPieces.filter((p) => p.colour === "black");
+
     const gs: GameState = {
-        posPieces: createPositionedPiecesAtRandom(6),
+        positionedPieces: [],
+        whitePiecesLeft: whitePieces,
+        blackPiecesLeft: blackPieces,
+        floatingPiece: null,
+        nextPieceColour: "black",
     };
 
     return gs;
