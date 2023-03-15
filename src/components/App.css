@@ -20,7 +20,7 @@ body * {
     width: 100%;
     grid-template-columns: repeat(14, 1fr);
     grid-template-rows: repeat(14, 1fr);
-    background: beige;
+    background: rgb(211, 211, 150);
     border-radius: 3px;
 }
 
@@ -32,10 +32,10 @@ body * {
 }
 
 .pieceSquare.black {
-    background: magenta;
+    background: #333;
     color: #fff;
 }
 .pieceSquare.white {
-    background: cyan;
+    background: white;
     color: #333;
 }
