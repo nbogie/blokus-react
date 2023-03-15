@@ -1,5 +1,6 @@
 import { useImmerReducer } from "use-immer";
 import { createInitialGameState } from "../gameCore/gameState";
+import { pieceOverlapsAny } from "../reducer/doPlacePiece";
 import { reducerFunction } from "../reducer/reducerFunction";
 import "./App.css";
 import { PositionedPieceC } from "./PositionedPieceC";
@@ -31,6 +32,7 @@ function App() {
                         posPiece={posPiece}
                         key={posPiece.piece.id}
                         onClick={() => {}}
+                        highlightError={false}
                     />
                 ))}
 
@@ -38,6 +40,10 @@ function App() {
                     <PositionedPieceC
                         posPiece={gameState.floatingPiece}
                         onClick={() => {}}
+                        highlightError={pieceOverlapsAny(
+                            gameState.floatingPiece,
+                            gameState.positionedPieces
+                        )}
                     />
                 )}
             </div>

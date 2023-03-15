@@ -39,6 +39,9 @@ body * {
     background: white;
     color: #333;
 }
+.pieceSquare.error {
+    background: rgba(184, 33, 58, 0.6);
+}
 
 .movementButtonGrid {
     display: grid;

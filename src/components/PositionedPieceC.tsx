@@ -4,11 +4,13 @@ import { rotateShapeCW } from "../gameCore/rotateShape";
 interface PositionedPieceCProps {
     posPiece: PositionedPiece;
     onClick: (id: string) => void;
+    highlightError: boolean;
 }
 
 export function PositionedPieceC({
     posPiece,
     onClick,
+    highlightError,
 }: PositionedPieceCProps): JSX.Element {
     const { piece, position } = posPiece;
     const { shape, colour } = piece;
@@ -19,7 +21,11 @@ export function PositionedPieceC({
                 row.map((cell, colIx) =>
                     cell === 0 ? null : (
                         <div
-                            className={"pieceSquare " + colour}
+                            className={
+                                "pieceSquare " +
+                                colour +
+                                (highlightError ? " error" : "")
+                            }
                             key={piece.id + "_" + colIx + "_" + rowIx}
                             style={{
                                 gridRow: `${position.y + rowIx + 1}`,
