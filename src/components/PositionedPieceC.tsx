@@ -1,7 +1,7 @@
-import { hFlipShape } from "../gameCore/flipShape";
-import { PositionedPiece } from "../gameCore/positionedPiece";
-import { rotateShapeCW } from "../gameCore/rotateShape";
-import { Shape } from "../gameCore/shape";
+import {
+    calcTransformedShape,
+    PositionedPiece,
+} from "../gameCore/positionedPiece";
 
 interface PositionedPieceCProps {
     posPiece: PositionedPiece;
@@ -16,13 +16,8 @@ export function PositionedPieceC({
 }: PositionedPieceCProps): JSX.Element {
     const { piece, position } = posPiece;
     const { colour } = piece;
+    const transformedShape = calcTransformedShape(posPiece);
 
-    let shape: Shape = posPiece.piece.shape;
-    if (posPiece.isFlipped) {
-        shape = hFlipShape(shape);
-    }
-
-    const transformedShape = rotateShapeCW(shape, posPiece.rotation);
     return (
         <>
             {transformedShape.rows.flatMap((row, rowIx) =>

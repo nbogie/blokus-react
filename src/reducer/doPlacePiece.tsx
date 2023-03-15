@@ -1,10 +1,10 @@
-import { hFlipShape } from "../gameCore/flipShape";
 import { GameState } from "../gameCore/gameState";
 import { isLegalPlacement } from "../gameCore/isLegalPlacement";
 import { areSamePosition, Position } from "../gameCore/position";
-import { PositionedPiece } from "../gameCore/positionedPiece";
-import { rotateShapeCW } from "../gameCore/rotateShape";
-import { Shape } from "../gameCore/shape";
+import {
+    calcTransformedShape,
+    PositionedPiece,
+} from "../gameCore/positionedPiece";
 import { PlacePieceAction } from "./action";
 
 export function doPlacePiece(gs: GameState, action: PlacePieceAction) {
@@ -34,11 +34,7 @@ function piecesOverlap(a: PositionedPiece, b: PositionedPiece): boolean {
 }
 
 export function calcRealCellPositions(p: PositionedPiece): Position[] {
-    let shape: Shape = p.piece.shape;
-    if (p.isFlipped) {
-        shape = hFlipShape(shape);
-    }
-    shape = rotateShapeCW(shape, p.rotation);
+    const shape = calcTransformedShape(p);
     const positionedCells: Position[] = [];
 
     shape.rows.forEach((row, y) => {
