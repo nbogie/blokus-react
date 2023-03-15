@@ -11,3 +11,7 @@ This makes it trickier to do things with the shape as a whole such as adding an 
 -   SVG
 -   Canvas
 -   Images
+
+# TODO:
+
+-   enforce proper piece placement rules
