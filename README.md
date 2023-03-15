@@ -14,11 +14,16 @@ This makes it trickier to do things with the shape as a whole such as adding an 
 
 # TODO:
 
+-   add piece selection (not random piece!)
+-   add piece-flipping (at least on one axis)
+-   add scoring
+-   add a simplest AI which just picks a move at random
+
+## Done:
+
 -   enforce proper piece placement rules
     -   no pieces placed? must hit starting square
     -   must not overlap any cell
     -   must not be orthogonally adjacent to any placed cell of own colour
     -   must diagonally touch at least one same-colour cell from a previously placed piece.
--   add piece selection (not random piece!)
 -   mark starting squares
--   add piece-flipping (at least on one axis)
