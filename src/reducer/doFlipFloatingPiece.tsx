@@ -16,11 +16,9 @@ export function doFlipFloatingPiece(
     const oldRot = gs.floatingPiece.rotation;
     //v-flip is just an hflip with 180 rot
     const newRotation =
-        action.flipDirection === "horizontal"
-            ? oldRot === 0 || oldRot === 2
-                ? oldRot
-                : (((oldRot + 2) % 4) as Rotation)
-            : oldRot === 1 || oldRot === 3
+        (action.flipDirection === "horizontal" &&
+            (oldRot === 0 || oldRot === 2)) ||
+        (action.flipDirection === "vertical" && (oldRot === 1 || oldRot === 3))
             ? oldRot
             : (((oldRot + 2) % 4) as Rotation);
 
