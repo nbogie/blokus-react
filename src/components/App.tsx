@@ -21,6 +21,7 @@ function App() {
             <PieceChoicesC
                 pieceColour={"black"}
                 remainingPieces={gameState.blackPiecesLeft}
+                dispatch={dispatch}
             />
 
             <div className="gameGrid">
@@ -50,6 +51,7 @@ function App() {
             <PieceChoicesC
                 pieceColour={"white"}
                 remainingPieces={gameState.whitePiecesLeft}
+                dispatch={dispatch}
             />
 
             <ControlButtons dispatch={dispatch} gameState={gameState} />

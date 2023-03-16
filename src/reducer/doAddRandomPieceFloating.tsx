@@ -27,6 +27,5 @@ export function doAddRandomPieceFloating(
         isFlipped: false,
     };
     gs.floatingPiece = positionedPiece;
-    // gs.positionedPieces.push(positionedPiece);
     gs.nextPieceColour = gs.nextPieceColour === "white" ? "black" : "white";
 }

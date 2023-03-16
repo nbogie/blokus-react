@@ -1,17 +1,21 @@
+import { Dispatch } from "react";
 import { createAllPieces } from "../gameCore/createPositionedPiecesAtRandom";
 import { Piece, PieceColour } from "../gameCore/piece";
 import { Position } from "../gameCore/position";
 import { PositionedPiece } from "../gameCore/positionedPiece";
-import { allShapes, getShapeById, Shape, ShapeId } from "../gameCore/shape";
+import { ShapeId } from "../gameCore/shape";
+import { Action } from "../reducer/action";
 import { PositionedPieceC } from "./PositionedPieceC";
 
 interface PieceChoicesCProps {
     remainingPieces: Piece[];
     pieceColour: PieceColour;
+    dispatch: Dispatch<Action>;
 }
 export function PieceChoicesC({
     remainingPieces,
     pieceColour,
+    dispatch,
 }: PieceChoicesCProps) {
     const positionedPieces = positionedPiecesForSide(pieceColour);
 
@@ -20,9 +24,14 @@ export function PieceChoicesC({
             {positionedPieces.map((p) =>
                 remainingPieces.find((rp) => rp.id === p.piece.id) ? (
                     <PositionedPieceC
+                        key={p.piece.id}
                         posPiece={p}
                         onClick={() => {
-                            console.log("clicked a piece");
+                            dispatch({
+                                name: "select-floating-piece",
+                                pieceId: p.piece.id,
+                                colour: p.piece.colour,
+                            });
                         }}
                         highlightError={false}
                     />

@@ -11,9 +11,17 @@ export function doPlacePiece(gs: GameState, action: PlacePieceAction) {
     if (!isLegalPlacement(action.positionPiece, gs.positionedPieces)) {
         return;
     }
+    const remaining =
+        gs.nextPieceColour === "black"
+            ? gs.blackPiecesLeft
+            : gs.whitePiecesLeft;
 
+    if (!remaining.find((p) => p.id === action.positionPiece.piece.id)) {
+        return;
+    }
     gs.floatingPiece = null;
     gs.positionedPieces.push(action.positionPiece);
+    gs.nextPieceColour = gs.nextPieceColour === "black" ? "white" : "black";
 }
 
 export function pieceOverlapsAny(

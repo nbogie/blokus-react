@@ -9,7 +9,15 @@ export type Action =
     | RotateFloatingPieceAction
     | PlacePieceAction
     | FlipFloatingPieceAction
-    | ResetGameAction;
+    | ResetGameAction
+    | SelectFloatingPieceAction;
+
+export type SelectFloatingPieceAction = {
+    name: "select-floating-piece";
+    pieceId: string;
+    colour: PieceColour;
+};
+
 export type PlacePieceAction = {
     name: "place-piece";
     positionPiece: PositionedPiece;
