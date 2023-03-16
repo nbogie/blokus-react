@@ -103,3 +103,8 @@ export const allShapes: Shape[] = [
 export function getShapeById(soughtId: ShapeId): Shape {
     return allShapes.find((s) => s.id === soughtId)!;
 }
+
+/**  Count the number of cells (filled squares) in a given shape */
+export function countCellsInShape(shape: Shape): number {
+    return shape.rows.flatMap((row) => row).filter((cell) => cell === 1).length;
+}

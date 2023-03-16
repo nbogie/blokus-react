@@ -9,6 +9,7 @@ import { ControlButtons } from "./ControlButtons";
 import { PieceChoicesC } from "./PieceChoicesC";
 import { PlayedPieces } from "./PlayedPieces";
 import { PositionedPieceC } from "./PositionedPieceC";
+import { ScoringC } from "./ScoringC";
 import { StartingPositionMarkerC } from "./StartingPositionMarkerC";
 
 function App() {
@@ -70,7 +71,12 @@ function App() {
             <ControlButtons dispatch={dispatch} gameState={gameState} />
 
             <div className="footer">
-                {isGameOver(gameState) && <div>Game Over!</div>}
+                {isGameOver(gameState) && (
+                    <div>
+                        Game Over!
+                        <ScoringC gameState={gameState} />
+                    </div>
+                )}
             </div>
         </div>
     );
