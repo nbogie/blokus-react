@@ -5,6 +5,7 @@ import { isLegalPlacement } from "../gameCore/isLegalPlacement";
 import { reducerFunction } from "../reducer/reducerFunction";
 import "./App.css";
 import { ControlButtons } from "./ControlButtons";
+import { PieceChoicesC } from "./PieceChoicesC";
 import { PlayedPieces } from "./PlayedPieces";
 import { PositionedPieceC } from "./PositionedPieceC";
 import { StartingPositionMarkerC } from "./StartingPositionMarkerC";
@@ -17,6 +18,11 @@ function App() {
 
     return (
         <div className="App">
+            <PieceChoicesC
+                pieceColour={"black"}
+                remainingPieces={gameState.blackPiecesLeft}
+            />
+
             <div className="gameGrid">
                 <PlayedPieces gameState={gameState} />
 
@@ -41,6 +47,10 @@ function App() {
                     position={getStartingPositionForColour("black")}
                 />
             </div>
+            <PieceChoicesC
+                pieceColour={"white"}
+                remainingPieces={gameState.whitePiecesLeft}
+            />
 
             <ControlButtons dispatch={dispatch} gameState={gameState} />
         </div>
