@@ -2,21 +2,25 @@ import { GameState } from "../gameCore/gameState";
 import { isLegalPlacement } from "../gameCore/isLegalPlacement";
 import { areSamePosition, Position } from "../gameCore/position";
 import {
-    calcTransformedShape,
+    calcRealCellPositions,
     PositionedPiece,
 } from "../gameCore/positionedPiece";
 import { PlacePieceAction } from "./action";
 
 export function doPlacePiece(gs: GameState, action: PlacePieceAction) {
-    if (!isLegalPlacement(action.positionPiece, gs.positionedPieces)) {
+    if (action.positionPiece.piece.colour !== gs.nextPieceColour) {
         return;
     }
+    //is the suggested piece in the player's pool?
     const remaining = gs.piecesLeft[gs.nextPieceColour];
-
     if (!remaining.find((p) => p.id === action.positionPiece.piece.id)) {
         return;
     }
-    gs.floatingPiece = null;
+
+    if (!isLegalPlacement(action.positionPiece, gs.positionedPieces)) {
+        return;
+    }
+    //let's do it!
     gs.positionedPieces.push(action.positionPiece);
 
     gs.piecesLeft[gs.nextPieceColour] = gs.piecesLeft[
@@ -27,6 +31,7 @@ export function doPlacePiece(gs: GameState, action: PlacePieceAction) {
     if (!gs.hasPassed[opponentColour]) {
         gs.nextPieceColour = opponentColour;
     }
+    gs.floatingPiece = null;
 }
 
 export function pieceOverlapsAny(
@@ -44,21 +49,4 @@ function piecesOverlap(a: PositionedPiece, b: PositionedPiece): boolean {
     return cellAPositions.some((posA) =>
         cellBPositions.some((posB) => areSamePosition(posA, posB))
     );
-}
-
-export function calcRealCellPositions(p: PositionedPiece): Position[] {
-    const shape = calcTransformedShape(p);
-    const positionedCells: Position[] = [];
-
-    shape.rows.forEach((row, y) => {
-        row.forEach((cell, x) => {
-            if (cell !== 0) {
-                positionedCells.push({
-                    x: x + p.position.x,
-                    y: y + p.position.y,
-                });
-            }
-        });
-    });
-    return positionedCells;
 }

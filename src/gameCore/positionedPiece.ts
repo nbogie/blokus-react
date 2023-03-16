@@ -19,3 +19,20 @@ export function calcTransformedShape(posPiece: PositionedPiece): Shape {
     }
     return rotateShapeCW(shape, posPiece.rotation);
 }
+
+export function calcRealCellPositions(p: PositionedPiece): Position[] {
+    const shape = calcTransformedShape(p);
+    const positionedCells: Position[] = [];
+
+    shape.rows.forEach((row, y) => {
+        row.forEach((cell, x) => {
+            if (cell !== 0) {
+                positionedCells.push({
+                    x: x + p.position.x,
+                    y: y + p.position.y,
+                });
+            }
+        });
+    });
+    return positionedCells;
+}

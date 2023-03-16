@@ -1,10 +1,7 @@
-import {
-    calcRealCellPositions,
-    pieceOverlapsAny,
-} from "../reducer/doPlacePiece";
+import { pieceOverlapsAny } from "../reducer/doPlacePiece";
 import { getStartingPositionForColour } from "./board";
 import { areSamePosition, Position } from "./position";
-import { PositionedPiece } from "./positionedPiece";
+import { calcRealCellPositions, PositionedPiece } from "./positionedPiece";
 
 export function isLegalPlacement(
     candidatePiece: PositionedPiece,

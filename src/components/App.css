@@ -110,6 +110,18 @@ body * {
     background: #999;
 }
 
+.pieceChoices.active {
+    border-bottom: 10px solid #333;
+}
+.pieceChoices {
+    border-bottom: 10px solid #33333300;
+}
+.pieceChoices.passed {
+    opacity: 0.5;
+}
+.pieceChoices.active .pieceSquare {
+    cursor: pointer;
+}
 .pieceChoices.black {
     grid-area: left;
 }

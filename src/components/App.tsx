@@ -31,6 +31,8 @@ function App() {
                 pieceColour={"black"}
                 remainingPieces={gameState.piecesLeft["black"]}
                 dispatch={dispatch}
+                isActive={gameState.nextPieceColour === "black"}
+                passed={gameState.hasPassed["black"]}
             />
 
             <div className="gameGrid">
@@ -61,6 +63,8 @@ function App() {
                 pieceColour={"white"}
                 remainingPieces={gameState.piecesLeft["white"]}
                 dispatch={dispatch}
+                isActive={gameState.nextPieceColour === "white"}
+                passed={gameState.hasPassed["white"]}
             />
 
             <ControlButtons dispatch={dispatch} gameState={gameState} />

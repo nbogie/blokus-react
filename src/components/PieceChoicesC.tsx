@@ -10,16 +10,27 @@ interface PieceChoicesCProps {
     remainingPieces: Piece[];
     pieceColour: PieceColour;
     dispatch: Dispatch<Action>;
+    isActive: boolean;
+    passed: boolean;
 }
 export function PieceChoicesC({
     remainingPieces,
     pieceColour,
     dispatch,
+    isActive,
+    passed,
 }: PieceChoicesCProps) {
     const positionedPieces = positionedPiecesForSide(pieceColour);
 
     return (
-        <div className={"pieceChoices " + pieceColour}>
+        <div
+            className={
+                "pieceChoices " +
+                pieceColour +
+                (isActive ? " active" : "") +
+                (passed ? " passed" : "")
+            }
+        >
             {positionedPieces.map((p) =>
                 remainingPieces.find((rp) => rp.id === p.piece.id) ? (
                     <PositionedPieceC
