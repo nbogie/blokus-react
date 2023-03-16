@@ -1,5 +1,5 @@
 import { GameState } from "../gameCore/gameState";
-import { pieceWouldBeInBounds } from "../gameCore/piece";
+import { positionedPieceIsInBounds } from "../gameCore/piece";
 import { Rotation } from "../gameCore/rotation";
 import { FlipFloatingPieceAction } from "./action";
 
@@ -23,7 +23,7 @@ export function doFlipFloatingPiece(
             : (((oldRot + 2) % 4) as Rotation);
 
     if (
-        pieceWouldBeInBounds(
+        positionedPieceIsInBounds(
             gs.floatingPiece.piece,
             newRotation,
             newFlipState,

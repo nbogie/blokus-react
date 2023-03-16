@@ -1,5 +1,6 @@
 import { pieceOverlapsAny } from "../reducer/doPlacePiece";
 import { getStartingPositionForColour } from "./board";
+import { positionedPieceIsInBounds } from "./piece";
 import { areSamePosition, Position } from "./position";
 import { calcRealCellPositions, PositionedPiece } from "./positionedPiece";
 
@@ -10,6 +11,17 @@ export function isLegalPlacement(
     if (pieceOverlapsAny(candidatePiece, positionedPieces)) {
         return false;
     }
+    if (
+        !positionedPieceIsInBounds(
+            candidatePiece.piece,
+            candidatePiece.rotation,
+            candidatePiece.isFlipped,
+            candidatePiece.position
+        )
+    ) {
+        return false;
+    }
+
     const ownPlacedPieces = positionedPieces.filter(
         (ppos) => ppos.piece.colour === candidatePiece.piece.colour
     );

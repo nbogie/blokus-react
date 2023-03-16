@@ -53,10 +53,10 @@ body * {
     grid-area: ctrls;
     display: grid;
     grid-template-areas:
-        "left up right flipH pass pass"
-        ".. down rotate flipV pass pass";
+        "left up right flipH pass"
+        ".. down rotate flipV ai";
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 .movementButtonGrid button {
     font-size: 1.3rem;
@@ -85,6 +85,9 @@ body * {
 }
 .movementButtonGrid .pass {
     grid-area: pass;
+}
+.movementButtonGrid .aiMove {
+    grid-area: ai;
 }
 
 .startingPositionMarker {

@@ -30,16 +30,16 @@ export function pieceDimensionsWhenRotatedAndFlipped(positionedPiece: {
     };
 }
 
-export function pieceWouldBeInBounds(
+export function positionedPieceIsInBounds(
     piece: Piece,
     rotation: Rotation,
-    isHFlipped: boolean,
+    isFlipped: boolean,
     pos: Position
 ) {
     const dim = pieceDimensionsWhenRotatedAndFlipped({
         piece,
         rotation,
-        isFlipped: isHFlipped,
+        isFlipped: isFlipped,
     });
     return (
         pos.x >= 0 &&

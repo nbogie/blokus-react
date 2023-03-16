@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+import { getRandomLegalPlacement } from "../gameCore/ai";
 import { GameState } from "../gameCore/gameState";
 import { Action } from "../reducer/action";
 
@@ -106,7 +107,25 @@ export function ControlButtons({
                     })
                 }
             >
-                pass
+                🏳️
+            </button>
+
+            <button
+                className="aiMove"
+                onClick={() => {
+                    const placement = getRandomLegalPlacement(
+                        gameState.nextPieceColour,
+                        gameState
+                    );
+                    if (placement) {
+                        dispatch({
+                            name: "place-piece",
+                            positionPiece: placement,
+                        });
+                    }
+                }}
+            >
+                💻
             </button>
         </div>
     );
