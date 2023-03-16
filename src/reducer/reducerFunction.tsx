@@ -1,10 +1,11 @@
 import { GameState } from "../gameCore/gameState";
-import { Action, SelectFloatingPieceAction } from "./action";
-import { doAddRandomPieceFloating } from "./doAddRandomPieceFloating";
+import { Action } from "./action";
 import { doFlipFloatingPiece } from "./doFlipFloatingPiece";
 import { doMoveFloatingPiece } from "./doMoveFloatingPiece";
+import { doPass } from "./doPass";
 import { doPlacePiece } from "./doPlacePiece";
 import { doRotateFloatingPiece } from "./doRotateFloatingPiece";
+import { doSelectFloatingPiece } from "./doSelectFloatingPiece";
 
 export function reducerFunction(
     gs: GameState,
@@ -13,9 +14,6 @@ export function reducerFunction(
     switch (action.name) {
         case "place-piece":
             doPlacePiece(gs, action);
-            return;
-        case "add-random-piece-floating":
-            doAddRandomPieceFloating(gs, action);
             return;
         case "reset-game":
             return;
@@ -31,6 +29,9 @@ export function reducerFunction(
         case "select-floating-piece":
             doSelectFloatingPiece(gs, action);
             return;
+        case "pass":
+            doPass(gs, action);
+            return;
         default:
             throw new UnreachableCodeError(
                 action,
@@ -42,25 +43,4 @@ class UnreachableCodeError extends Error {
     constructor(myNever: never, message: string) {
         super(message);
     }
-}
-function doSelectFloatingPiece(
-    gs: GameState,
-    action: SelectFloatingPieceAction
-) {
-    if (gs.nextPieceColour !== action.colour) {
-        return;
-    }
-    const piecePool =
-        action.colour === "black" ? gs.blackPiecesLeft : gs.whitePiecesLeft;
-    const foundPiece = piecePool.find((p) => p.id === action.pieceId);
-
-    if (!foundPiece) {
-        return;
-    }
-    gs.floatingPiece = {
-        piece: foundPiece,
-        isFlipped: false,
-        rotation: 0,
-        position: { x: 6, y: 6 },
-    };
 }

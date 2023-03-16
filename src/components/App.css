@@ -52,8 +52,8 @@ body * {
     grid-area: ctrls;
     display: grid;
     grid-template-areas:
-        "left up right flipH rand rand"
-        ".. down rotate flipV rand rand";
+        "left up right flipH pass pass"
+        ".. down rotate flipV pass pass";
     grid-template-rows: 1fr 1fr;
     grid-template-columns: repeat(6, 1fr);
 }
@@ -82,8 +82,8 @@ body * {
 .movementButtonGrid .flipH {
     grid-area: flipH;
 }
-.movementButtonGrid .addRandom {
-    grid-area: rand;
+.movementButtonGrid .pass {
+    grid-area: pass;
 }
 
 .startingPositionMarker {

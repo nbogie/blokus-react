@@ -4,12 +4,12 @@ import { PositionedPiece } from "../gameCore/positionedPiece";
 type Direction = { x: number; y: number };
 
 export type Action =
-    | AddRandomPieceFloatingAction
     | MoveFloatingPieceAction
     | RotateFloatingPieceAction
     | PlacePieceAction
     | FlipFloatingPieceAction
     | ResetGameAction
+    | PassAction
     | SelectFloatingPieceAction;
 
 export type SelectFloatingPieceAction = {
@@ -23,10 +23,7 @@ export type PlacePieceAction = {
     positionPiece: PositionedPiece;
 };
 export type ResetGameAction = { name: "reset-game" };
-export type AddRandomPieceFloatingAction = {
-    name: "add-random-piece-floating";
-    pieceColour: PieceColour;
-};
+export type PassAction = { name: "pass" };
 export type RotateFloatingPieceAction = { name: "rotate-floating-piece" };
 export type FlipFloatingPieceAction = {
     name: "flip-floating-piece";

@@ -2,7 +2,7 @@ import { boardWidth, boardHeight } from "./board";
 import { Position } from "./position";
 import { rotateShapeCW } from "./rotateShape";
 import { Rotation } from "./rotation";
-import { Shape } from "./shape";
+import { allShapes, Shape } from "./shape";
 
 export interface Piece {
     id: string;
@@ -47,4 +47,15 @@ export function pieceWouldBeInBounds(
         pos.y >= 0 &&
         pos.y + dim.height <= boardHeight
     );
+}
+
+export function createAllPieces() {
+    const allPieces: Piece[] = [];
+    for (let s of allShapes) {
+        for (let c of ["black", "white"] as PieceColour[]) {
+            const p: Piece = { colour: c, shape: s, id: s.id + "_" + c };
+            allPieces.push(p);
+        }
+    }
+    return allPieces;
 }

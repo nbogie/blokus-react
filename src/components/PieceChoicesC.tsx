@@ -1,6 +1,5 @@
 import { Dispatch } from "react";
-import { createAllPieces } from "../gameCore/createPositionedPiecesAtRandom";
-import { Piece, PieceColour } from "../gameCore/piece";
+import { createAllPieces, Piece, PieceColour } from "../gameCore/piece";
 import { Position } from "../gameCore/position";
 import { PositionedPiece } from "../gameCore/positionedPiece";
 import { ShapeId } from "../gameCore/shape";
@@ -36,7 +35,7 @@ export function PieceChoicesC({
                         highlightError={false}
                     />
                 ) : (
-                    <div></div>
+                    <div key={p.piece.id}></div>
                 )
             )}
         </div>

@@ -99,15 +99,14 @@ export function ControlButtons({
             </button>
 
             <button
-                className="addRandom"
+                className="pass"
                 onClick={() =>
                     dispatch({
-                        name: "add-random-piece-floating",
-                        pieceColour: gameState.nextPieceColour,
+                        name: "pass",
                     })
                 }
             >
-                🎲
+                pass
             </button>
         </div>
     );

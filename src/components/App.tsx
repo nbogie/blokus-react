@@ -20,7 +20,7 @@ function App() {
         <div className="App">
             <PieceChoicesC
                 pieceColour={"black"}
-                remainingPieces={gameState.blackPiecesLeft}
+                remainingPieces={gameState.piecesLeft["black"]}
                 dispatch={dispatch}
             />
 
@@ -50,7 +50,7 @@ function App() {
             </div>
             <PieceChoicesC
                 pieceColour={"white"}
-                remainingPieces={gameState.whitePiecesLeft}
+                remainingPieces={gameState.piecesLeft["white"]}
                 dispatch={dispatch}
             />
 
