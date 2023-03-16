@@ -2,5 +2,7 @@ import { GameState } from "../gameCore/gameState";
 import { PassAction } from "./action";
 
 export function doPass(gs: GameState, action: PassAction) {
-    throw new Error("Function not implemented.");
+    gs.hasPassed[gs.nextPieceColour] = true;
+    gs.floatingPiece = null;
+    gs.nextPieceColour = gs.nextPieceColour === "black" ? "white" : "black";
 }

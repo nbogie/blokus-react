@@ -11,7 +11,7 @@ export interface Piece {
 }
 
 export type PieceColour = "black" | "white";
-
+export const allPieceColours: PieceColour[] = ["black", "white"];
 export function pieceDimensionsWhenRotatedAndFlipped(positionedPiece: {
     piece: Piece;
     rotation: Rotation;

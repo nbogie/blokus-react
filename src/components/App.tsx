@@ -1,7 +1,8 @@
 import { useImmerReducer } from "use-immer";
 import { getStartingPositionForColour } from "../gameCore/board";
-import { createInitialGameState } from "../gameCore/gameState";
+import { createInitialGameState, GameState } from "../gameCore/gameState";
 import { isLegalPlacement } from "../gameCore/isLegalPlacement";
+import { allPieceColours } from "../gameCore/piece";
 import { reducerFunction } from "../reducer/reducerFunction";
 import "./App.css";
 import { ControlButtons } from "./ControlButtons";
@@ -15,6 +16,14 @@ function App() {
         reducerFunction,
         createInitialGameState()
     );
+
+    function isGameOver(gameState: GameState) {
+        return allPieceColours.every(
+            (colour) =>
+                gameState.hasPassed[colour] ||
+                gameState.piecesLeft[colour].length === 0
+        );
+    }
 
     return (
         <div className="App">
@@ -55,6 +64,10 @@ function App() {
             />
 
             <ControlButtons dispatch={dispatch} gameState={gameState} />
+
+            <div className="footer">
+                {isGameOver(gameState) && <div>Game Over!</div>}
+            </div>
         </div>
     );
 }

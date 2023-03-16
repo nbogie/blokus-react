@@ -23,7 +23,10 @@ export function doPlacePiece(gs: GameState, action: PlacePieceAction) {
         gs.nextPieceColour
     ].filter((p) => p.id !== action.positionPiece.piece.id);
 
-    gs.nextPieceColour = gs.nextPieceColour === "black" ? "white" : "black";
+    const opponentColour = gs.nextPieceColour === "black" ? "white" : "black";
+    if (!gs.hasPassed[opponentColour]) {
+        gs.nextPieceColour = opponentColour;
+    }
 }
 
 export function pieceOverlapsAny(
