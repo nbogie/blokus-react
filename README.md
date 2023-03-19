@@ -4,7 +4,7 @@
 
 Each piece is currently rendered as a set of individual elements representing each square constituting the shape. These are placed on a CSS Grid.
 
-This makes it trickier to do things with the shape as a whole such as adding an outline to the whole.
+This makes it trickier to do things with the shape as a whole such as adding an outline to the whole or picking up the whole in a drag and drop action.
 
 ### Other options
 
